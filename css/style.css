@@ -1,0 +1,94 @@
+:root {
+  /* COLORS */
+  --color-shade-darker: hsl(233, 54%, 16%);
+  --color-shade-neutral: hsl(234, 25%, 52%);
+  --color-shade-lighter: hsl(232, 10%, 56%);
+  --color-tint-lighter: hsl(0, 0%, 100%);
+  --color-primary-darker: hsl(341, 92%, 62%);
+  --color-primary-lighter: hsl(341, 100%, 83%);
+
+  --color-gradient-blue: hsl(237, 100%, 64%);
+  --color-gradient-pink: hsl(322, 87%, 55%);
+  --color-gradient-orange: hsl(13, 100%, 64%);
+
+  --gradient-darker-start: var(--color-gradient-blue);
+  --gradient-darker-end: var(--color-gradient-pink);
+  --gradient-darker: linear-gradient(to bottom, var(--gradient-darker-start), var(--gradient-darker-end));
+  --gradient-lighter-start: var(--color-gradient-orange);
+  --gradient-lighter-end: var(--color-gradient-pink);
+  --gradient-lighter: linear-gradient(to bottom, var(--gradient-lighter-start), var(--gradient-lighter-end));
+
+  /* TYPOGRAPHY */
+  --font-family: 'Plus Jakarta Sans';
+  --fw-heading: 800;
+  --fw-body: 400;
+
+    /*Fluid type from utopia.fyi
+      from 375px - 16px - 1.2
+      to 1440px - 18px - 1.25
+      selected to closely match scale from mobile to desktop
+      commented values below are approximate
+      equivalent to steps 0 2 4 and 5 in utopia */
+
+    /* Step 0: 16px → 18px */
+    --step-0: clamp(1rem, 0.956rem + 0.1878vi, 1.125rem);
+    /* Step 1: 24px → 28px */
+    --step-1: clamp(1.44rem, 1.3281rem + 0.4775vi, 1.7578rem);
+    /* Step 2: 32 → 44px */
+    --step-2: clamp(2.0736rem, 1.8366rem + 1.0111vi, 2.7466rem);
+    /* Step 3: 40px → 55px */
+    --step-3: clamp(2.4883rem, 2.1556rem + 1.4196vi, 3.4332rem);
+
+    --fs-body: var(--step-0);
+    --fs-heading-s: var(--step-1);
+    --fs-heading-m: var(--step-2);
+    --fs-heading-l: var(--step-3);
+
+  /* SPACE */
+    /*Fluid space from utopia.fyi
+        from 375px - 16px - 1.2
+        to 1440px - 18px - 1.25 */
+    /* Space 3xs: 4px → 5px */
+    --space-3xs: clamp(0.25rem, 0.228rem + 0.0939vi, 0.3125rem);
+    /* Space 2xs: 8px → 9px */
+    --space-2xs: clamp(0.5rem, 0.478rem + 0.0939vi, 0.5625rem);
+    /* Space xs: 12px → 14px */
+    --space-xs: clamp(0.75rem, 0.706rem + 0.1878vi, 0.875rem);
+    /* Space s: 16px → 18px */
+    --space-s: clamp(1rem, 0.956rem + 0.1878vi, 1.125rem);
+    /* Space m: 24px → 27px */
+    --space-m: clamp(1.5rem, 1.434rem + 0.2817vi, 1.6875rem);
+    /* Space l: 32px → 36px */
+    --space-l: clamp(2rem, 1.912rem + 0.3756vi, 2.25rem);
+    /* Space xl: 48px → 54px */
+    --space-xl: clamp(3rem, 2.868rem + 0.5634vi, 3.375rem);
+    /* Space 2xl: 64px → 72px */
+    --space-2xl: clamp(4rem, 3.8239rem + 0.7512vi, 4.5rem);
+    /* Space 3xl: 96px → 108px */
+    --space-3xl: clamp(6rem, 5.7359rem + 1.1268vi, 6.75rem);
+
+    /* One-up pairs */
+    /* Space 3xs-2xs: 4px → 9px */
+    --space-3xs-2xs: clamp(0.25rem, 0.14rem + 0.4695vi, 0.5625rem);
+    /* Space 2xs-xs: 8px → 14px */
+    --space-2xs-xs: clamp(0.5rem, 0.368rem + 0.5634vi, 0.875rem);
+    /* Space xs-s: 12px → 18px */
+    --space-xs-s: clamp(0.75rem, 0.618rem + 0.5634vi, 1.125rem);
+    /* Space s-m: 16px → 27px */
+    --space-s-m: clamp(1rem, 0.7579rem + 1.0329vi, 1.6875rem);
+    /* Space m-l: 24px → 36px */
+    --space-m-l: clamp(1.5rem, 1.2359rem + 1.1268vi, 2.25rem);
+    /* Space l-xl: 32px → 54px */
+    --space-l-xl: clamp(2rem, 1.5158rem + 2.0657vi, 3.375rem);
+    /* Space xl-2xl: 48px → 72px */
+    --space-xl-2xl: clamp(3rem, 2.4718rem + 2.2535vi, 4.5rem);
+    /* Space 2xl-3xl: 64px → 108px */
+    --space-2xl-3xl: clamp(4rem, 3.0317rem + 4.1315vi, 6.75rem);
+
+    /* based on ratios of line height / font-size in design system */
+    --line-height-heading: 1.25;
+    --line-height-static: 1.75rem;
+
+  /* MAGIC NUMBERS */
+  
+}
