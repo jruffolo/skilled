@@ -85,10 +85,264 @@
     /* Space 2xl-3xl: 64px → 108px */
     --space-2xl-3xl: clamp(4rem, 3.0317rem + 4.1315vi, 6.75rem);
 
+    --space-xs-3xl: clamp(1.5rem, -0.3486rem + 7.8873vi, 6.75rem);
+
     /* based on ratios of line height / font-size in design system */
     --line-height-heading: 1.25;
     --line-height-static: 1.75rem;
 
   /* MAGIC NUMBERS */
   
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--line-height-static);
+  color: var(--color-shade-neutral);
+  background-image: linear-gradient(var(--color-tint-lighter), hsl(232, 10%, 56%, 0.15));
+  overflow-x: hidden;
+}
+
+header,
+article,
+footer {
+  padding-inline: calc(1rem + var(--space-xs-3xl));
+  padding-block: var(--space-xs);
+}
+
+article {
+  margin-block: var(--space-xs-3xl);
+}
+
+p {
+  max-inline-size: 35ch;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--fw-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-shade-darker);
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--fs-heading-l);
+  color: var(--color-shade-darker);
+  min-inline-size: 14ch;
+  max-inline-size: 18ch;
+}
+
+h2 {
+  font-size: var(--fs-heading-m);
+  color: var(--color-tint-lighter);
+}
+
+h3 {
+  font-size: var(--fs-heading-s);
+  color: var(--color-shade-darker);
+}
+
+a {
+  font-weight: var(--fw-heading);
+  color: var(--color-primary-darker);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-lighter);
+}
+
+header a,
+#hero a,
+footer a {
+  display: inline-block;
+  inline-size: 10.5rem;
+  block-size: 3.5rem;
+  
+  border-radius: 31.5px;
+  color: var(--color-tint-lighter);
+
+  text-align: center;
+  line-height: 3.5rem;
+}
+
+header a {
+  background-color: var(--color-shade-darker);
+}
+
+header a:hover {
+  color: var(--color-tint-lighter);
+  background-color: var(--color-shade-neutral);
+}
+
+#hero a {
+  background-image: var(--gradient-lighter);
+}
+
+footer a {
+  background-image: var(--gradient-darker);
+}
+
+#hero a:hover,
+footer a:hover {
+  color: var(--color-tint-lighter);
+  background-color: hsl(0, 0%, 100%, 0.5);
+  background-blend-mode: lighten;
+}
+
+ul > :first-child {
+  background-image: var(--gradient-lighter);
+}
+
+ul h2 {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+footer {
+  background-color: var(--color-shade-darker);
+}
+
+/* COMPOSITION */
+.flow > * + * {
+  margin-block-start: var(--space, 1em);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  column-gap: var(--space-m);
+  row-gap: var(--space-2xl);
+}
+
+/* 250px is the ideal minimum column width */
+@supports (width: min(20rem, 100%)) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  }
+}
+
+/* UTILITY */
+.max-inline-size-85 {
+  max-inline-size: 85rem;
+}
+
+.center {
+  margin-inline: auto;
+}
+
+/* BLOCK */
+.card {
+  position: relative;
+  block-size: 20rem;
+  border-radius: 1rem;
+  background-color: var(--color-tint-lighter);
+  padding: var(--space-l);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  position: absolute;
+  inset-block-start: -28px;
+}
+
+.card img:hover {
+  block-size: 60px;
+  inset-block-start: -30px;
+  inset-inline-start: 34px;
+}
+
+.card p {
+  margin-block-end: auto;
+}
+
+.container {
+  container-name: body;
+  container-type: inline-size;
+}
+
+
+/* EXCEPTION */
+.cluster[data-flexColumn="true"] {
+  flex-direction: column;
+  align-items: start;
+}
+
+/* Offset image styling */
+#img-desktop {
+  position: absolute;
+  block-size: calc(18rem + 32cqw);
+  z-index: -1;
+  inset-block-start: calc(-8vw);
+  inset-inline-end: -16rem;
+}
+
+#img-tablet {
+  position: absolute;
+  block-size: calc(20rem + 36cqw);
+  z-index: -1;
+  inset-block-start: calc(-8vw);
+  inset-inline-end: -16rem;
+}
+
+::selection {
+  background-color: var(--color-primary-darker);
+  color: var(--color-tint-lighter);
+}
+
+@container body (max-width: 48rem) {
+  #img-desktop,
+  #img-tablet {
+    display: none;
+  }
+
+  #img-mobile {
+    block-size: unset;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin-block-start: -6rem;
+  }
+}
+
+@container body (min-width: 48rem) {
+  #img-desktop,
+  #img-mobile {
+    display: none;
+  }
+}
+
+@container body (min-width: 64rem) {
+  #img-tablet,
+  #img-mobile {
+    display: none;
+  }
+
+  #img-desktop {
+    display: block;
+  }
+}
+
+/* Courses hook card slim styling */
+@container body (max-width: 54rem) {
+  ul > :first-child {
+    block-size: unset;
+  }
 }
