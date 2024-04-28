@@ -194,6 +194,10 @@ footer a:hover {
   background-blend-mode: lighten;
 }
 
+ul {
+  margin-block-start: -6rem;
+}
+
 ul > :first-child {
   background-image: var(--gradient-lighter);
 }
@@ -286,7 +290,8 @@ footer {
 
 /* Offset image styling */
 #img-desktop {
-  position: absolute;
+  display: none;
+  position: fixed;
   block-size: calc(18rem + 32cqw);
   z-index: -1;
   inset-block-start: calc(-8vw);
@@ -294,11 +299,16 @@ footer {
 }
 
 #img-tablet {
-  position: absolute;
+  display: none;
+  position: fixed;
   block-size: calc(20rem + 36cqw);
   z-index: -1;
   inset-block-start: calc(-8vw);
   inset-inline-end: -16rem;
+}
+
+#img-mobile {
+  margin-inline: auto;
 }
 
 ::selection {
@@ -306,32 +316,22 @@ footer {
   color: var(--color-tint-lighter);
 }
 
-@container body (max-width: 48rem) {
-  #img-desktop,
-  #img-tablet {
+@container body (min-width: 48rem) {
+  #img-mobile {
     display: none;
   }
 
-  #img-mobile {
-    block-size: unset;
-    margin-inline: auto;
+  #img-tablet {
+    display: block;
   }
 
   ul {
-    margin-block-start: -6rem;
-  }
-}
-
-@container body (min-width: 48rem) {
-  #img-desktop,
-  #img-mobile {
-    display: none;
+    margin-block-start: unset;
   }
 }
 
 @container body (min-width: 64rem) {
-  #img-tablet,
-  #img-mobile {
+  #img-tablet {
     display: none;
   }
 
