@@ -44,6 +44,7 @@
     --fs-heading-m: var(--step-2);
     --fs-heading-l: var(--step-3);
 
+    
   /* SPACE */
     /*Fluid space from utopia.fyi
         from 375px - 16px - 1.2
@@ -91,8 +92,14 @@
     --line-height-heading: 1.25;
     --line-height-static: 1.75rem;
 
-  /* MAGIC NUMBERS */
-  
+  /* MAGIC NUMBER STUFF */
+    --minSize: unset;
+    --maxSize: unset;
+    --startWidth: unset;
+    --endWidth: unset;
+    --slope: calc( (var(--maxSize) - var(--minSize)) / (var(--endWidth) - var(--startWidth)) );
+    --yInt: calc(((-1 * var(--startWidth)) * var(--slope)) + var(--minSize));
+    --prefVal: calc((1rem * var(--yInt)) + (var(--slope) * 100vw));
 }
 
 body {
@@ -103,6 +110,7 @@ body {
   color: var(--color-shade-neutral);
   background-image: linear-gradient(var(--color-tint-lighter), hsl(232, 10%, 56%, 0.15));
   overflow-x: hidden;
+  inline-size: 100%;
 }
 
 header,
@@ -132,7 +140,7 @@ h3 {
 h1 {
   font-size: var(--fs-heading-l);
   color: var(--color-shade-darker);
-  min-inline-size: 14ch;
+  /* min-inline-size: 14ch; */
   max-inline-size: 18ch;
 }
 
@@ -195,7 +203,8 @@ footer a:hover {
 }
 
 ul {
-  margin-block-start: -6rem;
+  margin-block-start: -4rem;
+  padding: 0;
 }
 
 ul > :first-child {
@@ -241,8 +250,16 @@ footer {
 }
 
 /* UTILITY */
+.relative {
+  position: relative;
+}
+
 .max-inline-size-85 {
   max-inline-size: 85rem;
+}
+
+.max-inline-size-100 {
+  max-inline-size: 100rem;
 }
 
 .center {
@@ -291,24 +308,28 @@ footer {
 /* Offset image styling */
 #img-desktop {
   display: none;
-  position: fixed;
-  block-size: calc(18rem + 32cqw);
+  position: absolute;
   z-index: -1;
-  inset-block-start: calc(-8vw);
-  inset-inline-end: -16rem;
+  
+  max-block-size: clamp(39rem, 23.2143rem + 24.6652vi, 52.8125rem);
+  inset-block-start: calc(-1 * clamp(3.875rem, -2.6964rem + 10.2679vi, 9.625rem));
+  inset-inline-end: calc(-1 * clamp(9.625rem, 18.1964rem + -7.1429vi, 13.625rem));
 }
 
 #img-tablet {
   display: none;
   position: fixed;
-  block-size: calc(20rem + 36cqw);
+  block-size: clamp(35.625rem, 11.752rem + 49.6063vi, 43.5rem);
   z-index: -1;
-  inset-block-start: calc(-8vw);
-  inset-inline-end: -16rem;
+  inset-block-start: calc(-1 * clamp(1.875rem, -4.3775rem + 12.9921vi, 3.9375rem));
+  inset-inline-end: calc(-1 * clamp(13.625rem, 16.6486rem + -4.7244vi, 14.375rem));
 }
 
 #img-mobile {
   margin-inline: auto;
+  min-block-size: 20rem;
+  min-inline-size: 20rem;
+  max-block-size: 32rem;
 }
 
 ::selection {
