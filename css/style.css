@@ -116,7 +116,7 @@ body {
 header,
 article,
 footer {
-  padding-inline: calc(1rem + var(--space-xs-3xl));
+  padding-inline: calc(var(--space-xs-3xl));
   padding-block: var(--space-xs);
 }
 
